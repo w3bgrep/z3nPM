@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="z3nDesk.MainPage"
+             Title="z3nPM">
+    <Grid>
+        <!-- Определение колонок: левая для ползунка и свитчера, правая для кнопок -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Фоновое изображение -->
+        <Image Source="smalllogo.png" 
+               Aspect="AspectFill" 
+               ZIndex="0"
+               Grid.ColumnSpan="2" />
+
+        <!-- Полупрозрачный слой для затемнения -->
+        <BoxView Color="Black" 
+                 Opacity="0.5" 
+                 ZIndex="1"
+                 Grid.ColumnSpan="2" />
+
+        <!-- Левая колонка: ползунок и свитчер -->
+        <StackLayout Grid.Column="0"
+                     Padding="20"
+                     BackgroundColor="Transparent"
+                     ZIndex="2"
+                     Spacing="10">
+            <HorizontalStackLayout Spacing="10">
+                
+            <Switch Toggled="Kill"/>
+            <Label Text="Check / Kill" 
+                TextColor="White"
+                FontSize="20"
+                FontFamily="Iosevka"/>
+                
+
+                
+            </HorizontalStackLayout>
+            <Slider x:Name="mLimit"                     
+                    Minimum="1000" 
+                    Maximum="8000"                     
+                    ValueChanged="MemLimitChanged"/>
+
+            <Label Text="" 
+                   x:Name="memoryLimit"
+                   TextColor="White"
+                    FontSize="40"
+                    FontFamily="Iosevka"/>
+        </StackLayout>
+
+        <!-- Правая колонка: кнопки -->
+        <StackLayout Grid.Column="1"
+                     Padding="20"
+                     BackgroundColor="Transparent"
+                     ZIndex="2"
+                     Spacing="10">
+            <Button Text="Show Zenno Tasks" 
+                    x:Name="killButton"
+                    Clicked="ChekZen"
+                    Background="#40FFF8E0" 
+                    TextColor="Snow" 
+                    Padding="10"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    FontFamily="Iosevka"/>
+            <Button Text="Start Kill Timer" 
+                    x:Name="timerButton"
+                    Clicked="StartKillTimer" 
+                    Background="#40FFF8E0" 
+                    TextColor="Snow"
+                    Padding="10"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    FontFamily="Iosevka"/>
+            <Button Text="Show All Tasks"
+                    x:Name="showAllButton"
+                    Clicked="ShowBigTasks"
+                    Background="#40FFF8E0" 
+                    TextColor="Snow"
+                    Padding="10"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    FontFamily="Iosevka"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
